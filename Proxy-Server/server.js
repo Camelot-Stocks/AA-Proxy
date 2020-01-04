@@ -1,8 +1,13 @@
 require('newrelic');
 const express = require('express');
+const proxy = require('http-proxy-middleware');
 
 const app = express();
 const port = 3008;
+
+const tradeServiceHost = 'http://localhost:3000';
+const tradeServiceRoute = '/api/userstocks/:userId';
+app.use(tradeServiceRoute, proxy({ target: tradeServiceHost }));
 
 // TradeStock/////
 app.get('/tradestock/api/', (req,res) => {
