@@ -5,8 +5,8 @@ const proxy = require('http-proxy-middleware');
 const app = express();
 const port = 3008;
 
-const tradeServiceHost = 'http://localhost:3000';
-const tradeServiceRoute = '/api/userstocks/:userId';
+const tradeServiceHost = 'http://13.52.66.119:3000';
+const tradeServiceRoute = '/api/transactions/:userId';
 app.use(tradeServiceRoute, proxy({ target: tradeServiceHost }));
 
 // TradeStock/////
