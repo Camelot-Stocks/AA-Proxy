@@ -5,9 +5,12 @@ const proxy = require('http-proxy-middleware');
 const app = express();
 const port = 3008;
 
-const tradeServiceHost = 'http://13.52.66.119:3000';
+const tradeServiceHost = 'http://50.18.198.108';
 const tradeServiceRoute = '/api/transactions/:userId';
 app.use(tradeServiceRoute, proxy({ target: tradeServiceHost }));
+
+// loader verification test
+app.use('/loaderio-b734cb635c282ce3b7663151cae45b3c.txt', express.static('/home/ec2-user/TradeStock-Service/server/loaderio-b734cb635c282ce3b7663151cae45b3c.txt'));
 
 // TradeStock/////
 app.get('/tradestock/api/', (req,res) => {
